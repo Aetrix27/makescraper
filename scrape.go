@@ -30,13 +30,7 @@ func main() {
 	//inStock = false
 
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
-
-		//link := e.Attr("href")
-
 		// Print link
-		//fmt.Printf("Link found: %q -> %s\n", e.Text, link)
-		//_ = inStock
-
 		if strings.Contains("select delivery location", e.Text) {
 			stock_check.InStock = true
 
@@ -63,7 +57,7 @@ func main() {
 	fmt.Println(string(aStringValue))
 
 	bytesToWrite := []byte(aStringValue)
-	err := ioutil.WriteFile("new-file.json", bytesToWrite, 0644)
+	err := ioutil.WriteFile("output.json", bytesToWrite, 0644)
 	if err != nil {
 		panic(err)
 	}
